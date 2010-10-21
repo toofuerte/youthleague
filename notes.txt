@@ -22,3 +22,12 @@ dbl::we need to start making a pojo
 (plain old java object) for the registration form
 if you have time start adding data "fields"
 to uyifl.pojos.RegForm
+
+dbl::right now the app *MAY* be saving a little bit of info to the db
+i think just first name, last name and some phone numbers
+i dont have time to confirm it
+
+dbl::the dashboard for the app is located at 
+https://appengine.google.com/dashboard?&app_id=utahyifl
+the idea is that in the dashboard you could open the 
+datastore viewer to see the objects in there
