@@ -1,3 +1,4 @@
 dbl: just a commit test
 checking if it works
 http://blogs.intland.com/main/entry/39
+Freemind for mac and thinkingspace on android
