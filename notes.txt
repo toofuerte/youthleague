@@ -1,3 +1,8 @@
-dbl: just a commit test
+just a commit test
 checking if it works
+
+mercurial examples
 http://blogs.intland.com/main/entry/39
+
+current site
+http://home.utah.edu/~gda1/uyifl/index.html
