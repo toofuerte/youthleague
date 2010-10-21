@@ -1,2 +1,3 @@
 dbl: just a commit test
 checking if it works
+http://blogs.intland.com/main/entry/39
