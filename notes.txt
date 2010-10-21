@@ -1,7 +1,7 @@
-just a commit test
+dbl::just a commit test
 checking if it works
 
-mercurial examples
+dbl::mercurial examples
 http://blogs.intland.com/main/entry/39
 
 current site
@@ -9,4 +9,16 @@ http://home.utah.edu/~gda1/uyifl/index.html
 
 Freemind for mac and thinkingspace on android
 
-ok, your page is 
+dbl::ok, your page is http://utahyifl.appspot.com/
+also, if you go to http://utahyifl.appspot.com/registration
+the java file uyifl.servlets.Registration is hit and run
+(the relationship between url and java class is 
+defined in war/WEB-INF/web.xml)
+
+dbl::notice that i did make a small change to your reg.html
+so that it pointed to /registration
+
+dbl::we need to start making a pojo
+(plain old java object) for the registration form
+if you have time start adding data "fields"
+to uyifl.pojos.RegForm
