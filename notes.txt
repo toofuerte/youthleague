@@ -31,3 +31,6 @@ dbl::the dashboard for the app is located at
 https://appengine.google.com/dashboard?&app_id=utahyifl
 the idea is that in the dashboard you could open the 
 datastore viewer to see the objects in there
+
+gda::I have put in fields in the pojo. make sure things are right.  
+I was wondering if there is a way to set up to take payments?
