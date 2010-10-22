@@ -34,3 +34,8 @@ datastore viewer to see the objects in there
 
 gda::I have put in fields in the pojo. make sure things are right.  
 I was wondering if there is a way to set up to take payments?
+
+gda:: I can't access the db on the dashboard don't know if it is not working 
+right. I put in some information on the reg page and it came back with the info
+you put in and what I put in.
+  
