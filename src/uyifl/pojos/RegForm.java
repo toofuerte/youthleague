@@ -62,158 +62,200 @@ public class RegForm {
 	private String Coach;
 	@Persistent
 	private String teamName;
-	
+
 	// /////////////////////////////////
 	// // GETTERS AND SETTERS BELOW
 
 	public String toString() {
-		String addy = (address==null)?"<NULL>":address.getAddress();
-		return "("+key.toString()+") "+lastName+", "+firstName+" - "+addy+" - "+homeNumber.getNumber()+" & "+cellNumber.getNumber();
+		String addy = (address == null) ? "<NULL>" : address.getAddress();
+		return "(" + key.toString() + ") " + lastName + ", " + firstName
+				+ " - " + addy + " - " + homeNumber.getNumber() + " & "
+				+ cellNumber.getNumber();
 	}
-	
+
 	public Key getKey() {
 		return key;
 	}
+
 	public void setKey(Key key) {
 		this.key = key;
 	}
+
 	public String getFirstName() {
 		return firstName;
 	}
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	public String getLastName() {
 		return lastName;
 	}
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
 	public PostalAddress getAddress() {
 		return address;
 	}
+
 	public void setAddress(PostalAddress address) {
 		this.address = address;
 	}
+
 	public PhoneNumber getHomeNumber() {
 		return homeNumber;
 	}
+
 	public void setHomeNumber(PhoneNumber homeNumber) {
 		this.homeNumber = homeNumber;
 	}
+
 	public PhoneNumber getCellNumber() {
 		return cellNumber;
 	}
+
 	public void setCellNumber(PhoneNumber cellNumber) {
 		this.cellNumber = cellNumber;
 	}
+
 	public Email getEmail() {
 		return email;
 	}
+
 	public void setEmail(Email email) {
 		this.email = email;
 	}
+
 	public Date getBirthDate() {
 		return birthDate;
 	}
+
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
 	}
+
 	public String getShirtSize() {
 		return shirtSize;
 	}
+
 	public void setShirtSize(String shirtSize) {
 		this.shirtSize = shirtSize;
 	}
+
 	public String getPantSize() {
 		return pantSize;
 	}
+
 	public void setPantSize(String pantSize) {
 		this.pantSize = pantSize;
 	}
+
 	public int getWeight() {
 		return weight;
 	}
+
 	public void setWeight(int weight) {
 		this.weight = weight;
 	}
+
 	public String getEmergencyName() {
 		return emergencyName;
 	}
+
 	public void setEmergencyName(String emergencyName) {
 		this.emergencyName = emergencyName;
 	}
+
 	public PhoneNumber getePhone1() {
 		return ePhone1;
 	}
+
 	public void setePhone1(PhoneNumber ePhone1) {
 		this.ePhone1 = ePhone1;
 	}
+
 	public PhoneNumber getePhone2() {
 		return ePhone2;
 	}
+
 	public void setePhone2(PhoneNumber ePhone2) {
 		this.ePhone2 = ePhone2;
 	}
+
 	public String geteRelation() {
 		return eRelation;
 	}
+
 	public void seteRelation(String eRelation) {
 		this.eRelation = eRelation;
 	}
+
 	public String getgFirstName() {
 		return gFirstName;
 	}
+
 	public void setgFirstName(String gFirstName) {
 		this.gFirstName = gFirstName;
 	}
+
 	public String getgLastName() {
 		return gLastName;
 	}
+
 	public void setgLastName(String gLastName) {
 		this.gLastName = gLastName;
 	}
+
 	public PostalAddress getgAddress() {
 		return gAddress;
 	}
+
 	public void setgAddress(PostalAddress gAddress) {
 		this.gAddress = gAddress;
 	}
+
 	public PhoneNumber getgHomeNumber() {
 		return gHomeNumber;
 	}
+
 	public void setgHomeNumber(PhoneNumber gHomeNumber) {
 		this.gHomeNumber = gHomeNumber;
 	}
+
 	public PhoneNumber getgCellPhone() {
 		return gCellPhone;
 	}
+
 	public void setgCellPhone(PhoneNumber gCellPhone) {
 		this.gCellPhone = gCellPhone;
 	}
+
 	public Email getpEmail() {
 		return pEmail;
 	}
+
 	public void setpEmail(Email pEmail) {
 		this.pEmail = pEmail;
 	}
+
 	public String getCoach() {
 		return Coach;
 	}
+
 	public void setCoach(String coach) {
 		Coach = coach;
 	}
+
 	public String getTeamName() {
 		return teamName;
 	}
+
 	public void setTeamName(String teamName) {
 		this.teamName = teamName;
 	}
-	
-	
-	
-
-
 
 }
 
