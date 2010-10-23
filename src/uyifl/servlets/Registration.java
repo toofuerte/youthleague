@@ -20,56 +20,40 @@ import com.google.appengine.api.datastore.PostalAddress;
 @SuppressWarnings("serial")
 public class Registration extends HttpServlet {
 
-	/**
-	 * the POST parameters. storing these in the class scope allows a couple of
-	 * methods to access them
-	 */
 	private Map<String, String[]> params;
-	
 	private PersistenceManager pm = PMF.get().getPersistenceManager();
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest
-	 * , javax.servlet.http.HttpServletResponse)
-	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		params = req.getParameterMap();
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
+		out.println(getPageHeader());
+
 		String action = form("a");
 		if (action.equals("d")) {
 			RegForm rf = getRegForm(form("k"));
-			String msg = rf.toString();
+			String msg = rf.getKey().toString();
 			pm.deletePersistent(rf);
-			out.println("Hello, servlet<br>GET<br>i deleted form: "+msg);
-		}else if(action.equals("da")) {
+			out.println("i deleted form: " + msg);
+		} else if (action.equals("da")) {
 			pm.deletePersistentAll(getAllForms());
-			out.println("Hello, servlet<br>GET<br>datastore purge");
-		}else if(action.equals("sa")) {
-			out.println("Hello, servlet<br>GET<br>select all objects<hr>");
+			out.println("datastore purged");
+		} else if (action.equals("sa")) {
+			out.println("select all objects:<br>");
 			out.println(displayForms(getAllForms()));
 		} else {
-			out.println("Hello, servlet<br>GET<br>ERROR: no form data found");
+			out.println("ERROR: no 'input data' or 'action' found");
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest
-	 * , javax.servlet.http.HttpServletResponse)
-	 */
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		params = req.getParameterMap();
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
-		out.println("Hello, servlet<br>POST<hr>");
+		out.println(getPageHeader());
+
 		if (acceptableAttempt()) {
 			RegForm form = compileRegForm();
 			try {
@@ -79,10 +63,17 @@ public class Registration extends HttpServlet {
 				out.println(e.toString());
 				out.println("see server log for details");
 			}
-			out.println("well, i finished");
-			out.println(displayForms(getAllForms()));
+			out.println("well, i finished processing the input, thank you");
 		}
 
+	}
+
+	private String getPageHeader() {
+		StringBuilder value = new StringBuilder();
+		value.append("<h3>Hello, servlet</h3>");
+		value.append("<b>controls:</b> <a href=\"reg.html\">Add new record</a>, <a href=\"?a=sa\">View all records</a>, <a href=\"?a=da\">Delete all records</a>");
+		value.append("<br><hr>");
+		return value.toString();
 	}
 
 	/**
@@ -138,27 +129,27 @@ public class Registration extends HttpServlet {
 		try {
 			pm.makePersistent(form);
 		} finally {
-			//pm.close();
+			// pm.close();
 		}
 	}
-	
+
 	private List<RegForm> getAllForms() {
-		List<RegForm> forms = (List<RegForm>) pm. newQuery(
+		List<RegForm> forms = (List<RegForm>) pm.newQuery(
 				"SELECT FROM " + RegForm.class.getName()).execute();
 		return forms;
 	}
-	
+
 	private String displayForms(List<RegForm> forms) {
 		String value = "";
 		if (forms != null) {
 			value += "\n<br>I have " + forms.size() + " record(s)<br><ul>\n";
 			for (RegForm rf : forms)
-				value += "<li>" + rf.toString() + "<a href=\"?a=d&k="
+				value += "<li>" + rf.toString() + " <a href=\"?a=d&k="
 						+ KeyFactory.keyToString(rf.getKey())
 						+ "\">delete</a></li> \n";
 			value += "</ul>";
 		} else
-			value += "uh oh, forms is NULL :-(";
+			value += "uh oh, collection of Forms is NULL";
 		return value;
 	}
 
