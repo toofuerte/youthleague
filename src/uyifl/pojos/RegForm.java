@@ -65,6 +65,11 @@ public class RegForm {
 	
 	// /////////////////////////////////
 	// // GETTERS AND SETTERS BELOW
+
+	public String toString() {
+		String addy = (address==null)?"<NULL>":address.getAddress();
+		return "("+key.toString()+") "+lastName+", "+firstName+" - "+addy+" - "+homeNumber.getNumber()+" & "+cellNumber.getNumber();
+	}
 	
 	public Key getKey() {
 		return key;
