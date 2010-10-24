@@ -2,6 +2,8 @@ package uyifl.pojos;
 
 import java.util.Date;
 
+import javax.jdo.annotations.Embedded;
+import javax.jdo.annotations.EmbeddedOnly;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -10,7 +12,6 @@ import javax.jdo.annotations.PrimaryKey;
 import com.google.appengine.api.datastore.Email;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.PhoneNumber;
-import com.google.appengine.api.datastore.PostalAddress;
 
 @PersistenceCapable
 public class RegForm {
@@ -50,8 +51,11 @@ public class RegForm {
 	private String gFirstName;
 	@Persistent
 	private String gLastName;
+	
 	@Persistent
+	@Embedded
 	private PostalAddress gAddress;
+	
 	@Persistent
 	private PhoneNumber gHomeNumber;
 	@Persistent
@@ -63,11 +67,65 @@ public class RegForm {
 	@Persistent
 	private String teamName;
 
+	// EMBEDDED CLASS
+	@PersistenceCapable
+    @EmbeddedOnly
+    public static class PostalAddress {
+        @Persistent
+        private String address1;
+        @Persistent
+        private String address2;
+        @Persistent
+        private String city;
+        @Persistent
+        private String state;
+        @Persistent
+        private String zipCode;
+        
+        public String toString() {
+        	return address1+", "+address2+", "+city+", "+state+", "+zipCode;
+        }
+        
+		public String getAddress1() {
+			return address1;
+		}
+		public String getAddress2() {
+			return address2;
+		}
+		public String getCity() {
+			return city;
+		}
+		public String getState() {
+			return state;
+		}
+		public String getZipCode() {
+			return zipCode;
+		}
+		public void setAddress1(String address1) {
+			this.address1 = address1;
+		}
+		public void setAddress2(String address2) {
+			this.address2 = address2;
+		}
+		public void setCity(String city) {
+			this.city = city;
+		}
+		public void setState(String state) {
+			this.state = state;
+		}
+		public void setZipCode(String zipCode) {
+			this.zipCode = zipCode;
+		}
+        
+    }
+	
+	
+	
 	// /////////////////////////////////
 	// // GETTERS AND SETTERS BELOW
 
 	public String toString() {
-		String addy = (address == null) ? "<NULL>" : address.getAddress();
+		String addy = (address == null) ? "<NULL>" : address.toString();
 		return "(" + key.toString() + ") " + lastName + ", " + firstName
 				+ " - " + addy + " - " + homeNumber.getNumber() + " & "
 				+ cellNumber.getNumber();

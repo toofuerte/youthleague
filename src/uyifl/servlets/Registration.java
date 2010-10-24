@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import uyifl.pojos.RegForm;
 import uyifl.utils.PMF;
 
+import com.google.appengine.api.datastore.Email;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PhoneNumber;
 import com.google.appengine.api.datastore.PostalAddress;
@@ -111,9 +112,18 @@ public class Registration extends HttpServlet {
 		RegForm rf = new RegForm();
 		rf.setFirstName(form("pfname"));
 		rf.setLastName(form("plname"));
-		rf.setAddress(new PostalAddress("fakeAddy"));
+		
+		RegForm.PostalAddress p = new RegForm.PostalAddress();
+		p.setAddress1(form("padd1"));
+		p.setAddress2(form("padd2"));
+		p.setState(form("pState"));
+		p.setZipCode("pzip");
+		p.setCity(form("pcity"));
+		rf.setAddress(p);
+		
 		rf.setHomeNumber(new PhoneNumber(form("phphone")));
 		rf.setCellNumber(new PhoneNumber(form("pcphone")));
+		rf.setEmail(new Email(form("pemail")));
 		return rf;
 	}
 
