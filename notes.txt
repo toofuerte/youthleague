@@ -39,3 +39,6 @@ gda:: I can't access the db on the dashboard don't know if it is not working
 right. I put in some information on the reg page and it came back with the info
 you put in and what I put in.
   
+gda:: I have placed a new page called dba1.html for the template and the 
+database access page.  We would need to copy and change the page name... maybe not the 
+best way to manage that.
