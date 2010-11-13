@@ -16,7 +16,6 @@ import uyifl.utils.PMF;
 import com.google.appengine.api.datastore.Email;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PhoneNumber;
-import com.google.appengine.api.datastore.PostalAddress;
 
 @SuppressWarnings("serial")
 public class Registration extends HttpServlet {
@@ -47,6 +46,8 @@ public class Registration extends HttpServlet {
 			out.println("ERROR: no 'input data' or 'action' found");
 		}
 	}
+
+	
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
