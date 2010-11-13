@@ -17,6 +17,8 @@ import com.google.appengine.api.users.UserServiceFactory;
 @SuppressWarnings("serial")
 public class Users extends HttpServlet {
 
+	private String href="";
+
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 
@@ -34,6 +36,7 @@ public class Users extends HttpServlet {
 	}
 
 	private String getUserLink(String href) {
+		this.href=href;
 		UserService userService = UserServiceFactory.getUserService();
 		User user = getUser();
 		String ret = "";
@@ -54,6 +57,10 @@ public class Users extends HttpServlet {
 	public boolean isAdmin(User user) {
 		String e = user.getEmail();
 		return ( e.equals("danlangford@gmail.com") || e.equals("garyacton@gmail.com") );
+	}
+
+	public String signOutLink() {
+		return UserServiceFactory.getUserService().createLogoutURL(this.href);
 	}
 
 }
