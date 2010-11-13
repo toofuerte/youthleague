@@ -61,3 +61,6 @@ and the users dont have to have a paypal account, they could just pay with a cre
 gda:: I have placed a new page called dba1.html for the template and the 
 database access page.  We would need to copy and change the page name... maybe not the 
 best way to manage that.
+
+dbl:: ok, i might have admin rights figured out. right now garyaction@gmail.com and danlangford@gmail.com
+are admins there is still alot to work out but i wanted to show that we are on our way

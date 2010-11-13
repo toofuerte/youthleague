@@ -3,7 +3,6 @@ package uyifl.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import java.util.Map;
 
 import javax.jdo.PersistenceManager;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import uyifl.pojos.RegForm;
 import uyifl.utils.PMF;
+import uyifl.utils.ParamSorter;
 
 import com.google.appengine.api.datastore.Email;
 import com.google.appengine.api.datastore.KeyFactory;
@@ -20,19 +20,19 @@ import com.google.appengine.api.datastore.PhoneNumber;
 @SuppressWarnings("serial")
 public class Registration extends HttpServlet {
 
-	private Map<String, String[]> params;
 	private PersistenceManager pm = PMF.get().getPersistenceManager();
-
+	ParamSorter params;
+	
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		params = req.getParameterMap();
+		params = new ParamSorter(req.getParameterMap());
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 		out.println(getPageHeader());
 
-		String action = form("a");
+		String action = params.get("a");
 		if (action.equals("d")) {
-			RegForm rf = getRegForm(form("k"));
+			RegForm rf = getRegForm(params.get("k"));
 			String msg = rf.getKey().toString();
 			pm.deletePersistent(rf);
 			out.println("i deleted form: " + msg);
@@ -51,7 +51,7 @@ public class Registration extends HttpServlet {
 
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		params = req.getParameterMap();
+		params = new ParamSorter(req.getParameterMap());
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 		out.println(getPageHeader());
@@ -92,19 +92,11 @@ public class Registration extends HttpServlet {
 			return false;
 	}
 
-	/**
-	 * Convenience method to snag a parameter value. avoids null pointers
-	 * 
-	 * @param field
-	 *            parameter name
-	 * @return String value of parameter, or empty String if not found
-	 */
-	private String form(String field) {
-		if (params.containsKey(field))
-			return params.get(field)[0];
-		else
-			return "n/a";
+	private String form(String string) {
+		return params.get(string);
 	}
+
+
 
 	/**
 	 * @return RegForm object with values set from request params
