@@ -4,6 +4,14 @@
         <meta http-equiv="Content-Type" name="keywords" content="UYIFL,Utah youth indoor football, utah football, indoor, bylaws, football,utah, youth, indoor football, gaurdsman way, rice, eccles, rice eccles, rice eccles field house, take it indoors" />
         <title>UYIFL   - Take it Indoors - Home</title>
         <link rel="stylesheet" type="text/css" href="uyifl.css"/>
+        <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+        <script>
+        	$(document).ready(function(){
+        		$.get("/users?href="+location.href, function(data){
+        			$("#UserDrop").html(data);
+ 				});
+        	});
+        </script>
     </head>
     <body>
         <div id="logo">
@@ -62,9 +70,17 @@
 	
 	
   </li>
-</ul>				
+</ul>			
+<ul><li id=UserDrop>testing 123	</li></ul>
 </div>
             </div>
+            
+<!--
+            i need to put this code somewhere so it doesnt get lost
+            
+})
+ -->
+            
 		<!-- ADDS SPACE-->	
 			<div id="adds">
 				Crew Colors

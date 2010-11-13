@@ -2,6 +2,7 @@ package uyifl.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Map;
 
 import javax.jdo.PersistenceManager;
@@ -12,44 +13,49 @@ import javax.servlet.http.HttpServletResponse;
 import uyifl.pojos.RegForm;
 import uyifl.utils.PMF;
 
+import com.google.appengine.api.datastore.Email;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PhoneNumber;
 
 @SuppressWarnings("serial")
 public class Registration extends HttpServlet {
 
-	/**
-	 * the POST parameters. storing these in the class scope allows a couple of
-	 * methods to access them
-	 */
 	private Map<String, String[]> params;
+	private PersistenceManager pm = PMF.get().getPersistenceManager();
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest
-	 * , javax.servlet.http.HttpServletResponse)
-	 */
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
+		params = req.getParameterMap();
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
-		out.println("Hello, servlet<br>GET<br>ERROR: no form data found");
+		out.println(getPageHeader());
+
+		String action = form("a");
+		if (action.equals("d")) {
+			RegForm rf = getRegForm(form("k"));
+			String msg = rf.getKey().toString();
+			pm.deletePersistent(rf);
+			out.println("i deleted form: " + msg);
+		} else if (action.equals("da")) {
+			pm.deletePersistentAll(getAllForms());
+			out.println("datastore purged");
+		} else if (action.equals("sa")) {
+			out.println("select all objects:<br>");
+			out.println(displayForms(getAllForms()));
+		} else {
+			out.println("ERROR: no 'input data' or 'action' found");
+		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest
-	 * , javax.servlet.http.HttpServletResponse)
-	 */
+	
+
 	public void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		params = req.getParameterMap();
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
-		out.println("Hello, servlet<br>POST<hr>");
+		out.println(getPageHeader());
+
 		if (acceptableAttempt()) {
 			RegForm form = compileRegForm();
 			try {
@@ -59,10 +65,17 @@ public class Registration extends HttpServlet {
 				out.println(e.toString());
 				out.println("see server log for details");
 			}
-			out.println("well, i finished");
-			//displayParams(out);
+			out.println("well, i finished processing the input, thank you");
 		}
 
+	}
+
+	private String getPageHeader() {
+		StringBuilder value = new StringBuilder();
+		value.append("<h3>Hello, servlet</h3>");
+		value.append("<b>controls:</b> <a href=\"reg.html\">Add new record</a>, <a href=\"?a=sa\">View all records</a>, <a href=\"?a=da\">Delete all records</a>");
+		value.append("<br><hr>");
+		return value.toString();
 	}
 
 	/**
@@ -80,8 +93,7 @@ public class Registration extends HttpServlet {
 	}
 
 	/**
-	 * Convenience method to snag a parameter value.
-	 * avoids null pointers
+	 * Convenience method to snag a parameter value. avoids null pointers
 	 * 
 	 * @param field
 	 *            parameter name
@@ -91,56 +103,88 @@ public class Registration extends HttpServlet {
 		if (params.containsKey(field))
 			return params.get(field)[0];
 		else
-			return null;
+			return "n/a";
 	}
-	
 
 	/**
 	 * @return RegForm object with values set from request params
 	 */
 	private RegForm compileRegForm() {
-		RegForm form=new RegForm();
-		form.setFirstName(form("pfname"));
-		form.setLastName(form("plname"));
-		//form.setAddress(new PostalAddress(form(field)));
-		form.setHomeNumber(new PhoneNumber(form("phphone")));
-		form.setCellNumber(new PhoneNumber(form("pcphone")));
-		return form;
+		RegForm rf = new RegForm();
+		rf.setFirstName(form("pfname"));
+		rf.setLastName(form("plname"));
+		
+		RegForm.PostalAddress p = new RegForm.PostalAddress();
+		p.setAddress1(form("padd1"));
+		p.setAddress2(form("padd2"));
+		p.setState(form("pState"));
+		p.setZipCode("pzip");
+		p.setCity(form("pcity"));
+		rf.setAddress(p);
+		
+		rf.setHomeNumber(new PhoneNumber(form("phphone")));
+		rf.setCellNumber(new PhoneNumber(form("pcphone")));
+		rf.setEmail(new Email(form("pemail")));
+		return rf;
+	}
+
+	private RegForm getRegForm(String k) {
+		RegForm r = pm.getObjectById(RegForm.class, KeyFactory.stringToKey(k));
+		return r;
 	}
 
 	/**
 	 * @param form
 	 */
 	private void persist(RegForm form) throws Exception {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-        try {
-            pm.makePersistent(form);
-        } finally {
-            pm.close();
-        }
+		try {
+			pm.makePersistent(form);
+		} finally {
+			// pm.close();
+		}
 	}
 
-//	private void displayParams(PrintWriter out) {
-//		// just display all the parameters received
-//		Enumeration<String> parameterNames = params.getParameterNames();
-//		while (parameterNames.hasMoreElements()) {
-//			String paramName = parameterNames.nextElement();
-//			out.println("<br><B>" + paramName + "</B>");
-//			String[] paramValues = params.getParameterValues(paramName);
-//			if (paramValues.length == 1) {
-//				String paramValue = paramValues[0];
-//				if (paramValue.length() == 0)
-//					out.print("=<I>No Value</I>");
-//				else
-//					out.print("=" + paramValue);
-//			} else {
-//				out.println("<UL>");
-//				for (int i = 0; i < paramValues.length; i++) {
-//					out.println("<LI>" + paramValues[i]);
-//				}
-//				out.println("</UL>");
-//			}
-//		}
-//	}
+	private List<RegForm> getAllForms() {
+		List<RegForm> forms = (List<RegForm>) pm.newQuery(
+				"SELECT FROM " + RegForm.class.getName()).execute();
+		return forms;
+	}
+
+	private String displayForms(List<RegForm> forms) {
+		String value = "";
+		if (forms != null) {
+			value += "\n<br>I have " + forms.size() + " record(s)<br><ul>\n";
+			for (RegForm rf : forms)
+				value += "<li>" + rf.toString() + " <a href=\"?a=d&k="
+						+ KeyFactory.keyToString(rf.getKey())
+						+ "\">delete</a></li> \n";
+			value += "</ul>";
+		} else
+			value += "uh oh, collection of Forms is NULL";
+		return value;
+	}
+
+	// private void displayParams(PrintWriter out) {
+	// // just display all the parameters received
+	// Enumeration<String> parameterNames = params.getParameterNames();
+	// while (parameterNames.hasMoreElements()) {
+	// String paramName = parameterNames.nextElement();
+	// out.println("<br><B>" + paramName + "</B>");
+	// String[] paramValues = params.getParameterValues(paramName);
+	// if (paramValues.length == 1) {
+	// String paramValue = paramValues[0];
+	// if (paramValue.length() == 0)
+	// out.print("=<I>No Value</I>");
+	// else
+	// out.print("=" + paramValue);
+	// } else {
+	// out.println("<UL>");
+	// for (int i = 0; i < paramValues.length; i++) {
+	// out.println("<LI>" + paramValues[i]);
+	// }
+	// out.println("</UL>");
+	// }
+	// }
+	// }
 
 }
