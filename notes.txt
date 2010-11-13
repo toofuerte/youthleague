@@ -39,6 +39,25 @@ gda:: I can't access the db on the dashboard don't know if it is not working
 right. I put in some information on the reg page and it came back with the info
 you put in and what I put in.
   
+dbl::yeah, im trying to figure out the database storage. i added some logic
+to display the database entries for debugging purposes until i can get everything
+ironed out. thats why you see everything after filling out a for. ill have more time
+to look at it tonight.
+
+dbl::the pojo is looking good. now we just need to get the info from the form and
+shove it into the pojo. in uyifl.servlets.Registration you can seecompileRegForm method does that
+here is the pattern: rf is the variable of the current registration form
+form() is a method that gets info sent in from the form. the string passed is the
+name of the html input field holding the information
+	rf.setLastName(form("plname"));
+setLastName takes a string and form return a string so the above works fine
+	rf.setHomeNumber(new PhoneNumber(form("phphone")));
+however setHomeNumber takes a PhoneNumber. fortunatly the PhoneNumber constructor accepts a string
+
+dbl::the EASIEST way to do payments would be via a paypal account. they have a great interface
+where the website kicks you out to paypal to make the payment and then back to the site when they are done
+and the users dont have to have a paypal account, they could just pay with a credit/debit card
+		
 gda:: I have placed a new page called dba1.html for the template and the 
 database access page.  We would need to copy and change the page name... maybe not the 
 best way to manage that.
