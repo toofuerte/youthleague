@@ -1,0 +1,66 @@
+dbl::just a commit test
+checking if it works
+
+dbl::mercurial examples
+http://blogs.intland.com/main/entry/39
+
+current site
+http://home.utah.edu/~gda1/uyifl/index.html
+
+Freemind for mac and thinkingspace on android
+
+dbl::ok, your page is http://utahyifl.appspot.com/
+also, if you go to http://utahyifl.appspot.com/registration
+the java file uyifl.servlets.Registration is hit and run
+(the relationship between url and java class is 
+defined in war/WEB-INF/web.xml)
+
+dbl::notice that i did make a small change to your reg.html
+so that it pointed to /registration
+
+dbl::we need to start making a pojo
+(plain old java object) for the registration form
+if you have time start adding data "fields"
+to uyifl.pojos.RegForm
+
+dbl::right now the app *MAY* be saving a little bit of info to the db
+i think just first name, last name and some phone numbers
+i dont have time to confirm it
+
+dbl::the dashboard for the app is located at 
+https://appengine.google.com/dashboard?&app_id=utahyifl
+the idea is that in the dashboard you could open the 
+datastore viewer to see the objects in there
+
+gda::I have put in fields in the pojo. make sure things are right.  
+I was wondering if there is a way to set up to take payments?
+
+gda:: I can't access the db on the dashboard don't know if it is not working 
+right. I put in some information on the reg page and it came back with the info
+you put in and what I put in.
+  
+dbl::yeah, im trying to figure out the database storage. i added some logic
+to display the database entries for debugging purposes until i can get everything
+ironed out. thats why you see everything after filling out a for. ill have more time
+to look at it tonight.
+
+dbl::the pojo is looking good. now we just need to get the info from the form and
+shove it into the pojo. in uyifl.servlets.Registration you can seecompileRegForm method does that
+here is the pattern: rf is the variable of the current registration form
+form() is a method that gets info sent in from the form. the string passed is the
+name of the html input field holding the information
+	rf.setLastName(form("plname"));
+setLastName takes a string and form return a string so the above works fine
+	rf.setHomeNumber(new PhoneNumber(form("phphone")));
+however setHomeNumber takes a PhoneNumber. fortunatly the PhoneNumber constructor accepts a string
+
+dbl::the EASIEST way to do payments would be via a paypal account. they have a great interface
+where the website kicks you out to paypal to make the payment and then back to the site when they are done
+and the users dont have to have a paypal account, they could just pay with a credit/debit card
+		
+gda:: I have placed a new page called dba1.html for the template and the 
+database access page.  We would need to copy and change the page name... maybe not the 
+best way to manage that.
+
+dbl:: ok, i might have admin rights figured out. right now garyaction@gmail.com and danlangford@gmail.com
+are admins there is still alot to work out but i wanted to show that we are on our way
