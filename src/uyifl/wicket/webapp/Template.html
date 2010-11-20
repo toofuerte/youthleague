@@ -5,7 +5,346 @@
 <meta http-equiv="Content-Type" name="keywords"
 	content="UYIFL,Utah youth indoor football, utah football, indoor, bylaws, football,utah, youth, indoor football, gaurdsman way, rice, eccles, rice eccles, rice eccles field house, take it indoors" />
 <title>UYIFL - Take it Indoors - Home</title>
-<link rel="stylesheet" type="text/css" href="uyifl.css" />
+<!-- <link rel="stylesheet" type="text/css" href="uyifl.css" /> -->
+<style type="text/css" media="screen">
+body {
+	background-color: #333333;
+	color: #000000;
+	font-family: "Comic Sans MS", Arial, sans-serif;
+	margin: 0;
+	padding: 5px;
+	border: 0px;
+	/* This removes the border around the viewport in old versions of IE */
+	min-width: 1000px;
+	max-width: 1000px;
+}
+
+a {
+	color: #0000BB;
+}
+
+#btop {
+	margin: 0 35px;
+	color: #CC2200;
+	font-size: large;
+}
+
+#pbd {
+	filter: alpha(opacity =   60);
+	position: fixed;
+	top: 150px;
+	left: 200px;
+}
+
+h1 {
+	color: #ff0000;
+	font-size: x-large;
+	font-family: "Comic Sans MS";
+}
+
+h3 {
+	text-transform: uppercase;
+	color: #0000BB;
+	font-size: x-large;
+	border-bottom: solid-black 2px
+}
+
+h4 {
+	color: #0000BB;
+	font-size: large;
+	font-family: "Comic Sans MS";
+}
+
+#center {
+	text-align: center;
+}
+
+#adds {
+	float: right;
+	width: 130px;
+	padding-right: 5px;
+	padding-top: 10px;
+}
+
+#center2 {
+	font-size: x-large;
+	text-align: center;
+}
+
+h5.pos_right {
+	font-size: medium;
+	left: 320px;
+}
+
+h5.pos_left {
+	font-size: medium;
+	left: 20px;
+}
+
+#nums {
+	float: left;
+	width: 65px;
+}
+
+#nums2 {
+	font-weight: 400;
+	float: left;
+	width: 65px;
+	color: #FFFFFF;
+	background: #33aa33;
+}
+
+#rules {
+	margin: 0 65px;
+}
+
+#rules2 {
+	margin: 0 65px;
+	color: #FFFFFF;
+	background: #33aa33;
+}
+
+#nums3 {
+	font-weight: 400;
+	float: left;
+	width: 55px;
+	background: #44bb44;
+}
+
+#rules3 {
+	margin: 0 50px;
+	background: #ee33ee;
+}
+
+/*-------------------HEADER----------------------*/
+#logo {
+	margin: auto;
+	border-left: 3px solid #ffffff;
+	border-right: 3px solid #ffffff;
+	border-top: 3px solid #ffffff;
+	background-color: #000066;
+	color: #0000bb;
+	text-align: center;
+	width: 90%;
+}
+
+#container1 {
+	margin: auto;
+	width: 90%;
+	border: solid 3px #ffffff;
+	color: #ffffff;
+	position: relative; /* This fixes the IE7 overflow hidden bug */
+	clear: both; /* width of whole page */
+	overflow: hidden;
+	background-color: #cc2200;
+}
+
+#rules1 {
+	width: 80%;
+	/* border: 1px #000000 solid; */
+	position: relative; /* This fixes the IE7 overflow hidden bug */
+	clear: both; /* width of whole page */
+	overflow: hidden;
+}
+
+/*
+ #rules2{
+ width:50px;
+ /*
+ background-color:#DDDDDD;
+ border: 1px #000000 solid;
+ */
+}
+* / #rules3 {
+	width: 80%;
+	margin-left: 60px;
+	/*
+     background-color: #33AA33;
+     */
+}
+
+* /
+
+.top {
+	vertical-align: top;
+}
+
+#FloatLeft {
+	float: left;
+}
+
+#Floatright {
+	text-align: right;
+}
+
+#leftcolumn {
+	float: left;
+	width: 130px;
+	background-color: #cc2200;
+	color: #338833;
+	padding-top: 10px;
+}
+
+#rightcolumn {
+	margin-left: 130px;
+	width: 67%;
+	padding: 10px;
+	color: #0000BB;
+	background-color: #ffffff;
+	min-height: 400px;
+}
+
+.tables {
+	border-collapse: collapse;
+	border-color: #33aa33;
+	border-style: inset;
+}
+
+/* -----------------------Nav Bar---------------------*/
+#menu {
+	width: 100%; /* 12em; */
+	background: #cc2200;
+}
+
+#menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#menu a,#menu h2, #menu em {
+	font: 13px "Comic Sans MS", Times, serif;
+	color: #FFFFFF;
+	display: block;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #cccccc #888888 #555555 #bbbbbb;
+	margin: 0;
+	padding: 2px 3px;
+}
+
+#menu h2 {
+	color: #ffffff;
+	background: #cc2200;
+}
+
+#menu a, #menu em {
+	color: #0000000;
+	background-color: #cc2200;
+	text-decoration: none;
+}
+
+#menu a:hover {
+	background: #cc2200;
+	background: #33aa33;
+}
+
+#menu li {
+	position: relative;
+}
+
+#menu ul ul ul {
+	position: absolute;
+	top: 0;
+	left: 100%;
+	width: 100%;
+}
+
+div#menu ul ul ul,div#menu ul ul li:hover ul ul {
+	display: none;
+}
+
+div#menu ul ul li:hover ul,div#menu ul ul ul li:hover ul {
+	display: block;
+}
+
+.navBar {
+	font-size: medium;
+	float: left;
+	width: 120px;
+	padding: 0px;
+	padding-left: 3px;
+	text-decoration: none;
+	display: block;
+	color: #ffffff;
+	background-color: #cc2200;
+	/*
+     border-top: 3px #dde8d8 solid;
+     border-left: 3px #dde8d8 solid;
+     border-bottom: 3px #ffffff solid;
+     border-right: 3px #69ba3e solid;
+     */
+	text-align: left;
+	text-decoration: none;
+	list-style-type: none;
+}
+
+a.navBar:link {
+	color: #ffffff;
+}
+
+a.navBar:visited {
+	color: #dddddd;
+}
+
+a.navBar:hover {
+	color: #0000bb;
+	background-color: #33aa33;
+	/*
+ border-top: 3px #dde8d8 solid;
+    border-left: 3px #69ba3e solid;
+    border-bottom: 3px #69ba3e solid;
+    border-right: 3px #dde8d8 solid;
+*/
+}
+
+/*-------------------FOOTER------------------*/
+#footer {
+	border-top: 0px double #000000;
+	padding: 5px 0 5px 0;
+	background-color: #33aa33;
+	color: #ffffff;
+	font-size: .7em;
+	font-style: italic;
+	text-align: center;
+}
+
+h2 {
+	text-align: center;
+}
+</style>
+
+<!--[if IE]>
+<style type="text/css" media="screen">
+#menu ul li {
+	float: left;
+	width: 100%;
+}
+</style>
+<![endif]-->
+
+<!--[if lt IE 7]>
+<style type="text/css" media="screen">
+body {
+	behavior: url(csshover.htc);
+	font-size: 100%;
+}
+
+#menu ul li {
+	float: left;
+	width: 100%;
+}
+
+#menu ul li a {
+	height: 1%;
+}
+
+#menu a,#menu h2 {
+	font: bold 0.8em/1.4em "Comic Sans MS", Times, serif;
+}
+</style>
+<![endif]-->
+
 </head>
 <body>
 <div id="logo"><a href="index.html"><img
