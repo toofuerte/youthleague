@@ -1,0 +1,67 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<wicket:head>
+	<title>UYIFL - Take it Indoors - Media</title>
+	<SCRIPT type="text/javascript">
+<!--
+	var dimages = new Array();
+	var numImages = 6;
+	for (i = 0; i < numImages; i++) {
+		dimages[i] = new Image();
+		dimages[i].src = "/pictures/image" + (i + 1) + ".jpg";
+	}
+	var curImage = -1;
+	function swapPicture() {
+		if (document.images) {
+			var nextImage = curImage + 1;
+			if (nextImage >= numImages)
+				nextImage = 0;
+			if (dimages[nextImage] && dimages[nextImage].complete) {
+				var target = 0;
+				if (document.images.myImage)
+					target = document.images.myImage;
+				if (document.all && document.getElementById("myImage"))
+					target = document.getElementById("myImage");
+
+				// make sure target is valid.  It might not be valid
+				//   if the page has not finished loading
+				if (target) {
+					target.src = dimages[nextImage].src;
+					curImage = nextImage;
+				}
+				setTimeout("swapPicture()", 2000);
+			} else {
+				setTimeout("swapPicture()", 500);
+			}
+		}
+	}
+	setTimeout("swapPicture()", 2000);
+//-->
+</SCRIPT>
+</wicket:head>
+
+</head>
+<body>
+<wicket:extend>
+
+	<h3>Pictures</h3>
+
+	<h3>War Bowl Winners 2010</h3>
+	<IMG WIDTH="450px" ID="myImage" NAME="myImage"
+		SRC="pictures/image1.gif" alt="Slideshow!">
+	<br />
+
+	<h3>VIDEO!!!</h3>
+	<object width="480" height="385">
+		<param name="movie"
+			value="http://www.youtube.com/v/HrEfBSndw0M?fs=1&amp;hl=en_US"></param>
+		<param name="allowFullScreen" value="true"></param>
+		<param name="allowscriptaccess" value="always"></param>
+		<embed src="http://www.youtube.com/v/HrEfBSndw0M?fs=1&amp;hl=en_US"
+			type="application/x-shockwave-flash" allowscriptaccess="always"
+			allowfullscreen="true" width="480" height="385"></embed></object>
+
+</wicket:extend>
+</body>
+</html>
