@@ -1,12 +1,12 @@
-package uyifl.wicket.webapp;
+package uyifl.wicket.app;
 
 import org.apache.wicket.markup.html.WebPage;
 
-public class Template extends WebPage {
+public class AppTemplate extends WebPage {
 
-	public Template() {
+	public AppTemplate() {
 
-		// the <wicket:link> tag in Template.html should do all this automagically
+		// the <wicket:link> tag in AppTemplate.html should do all this automagically
 //		add(new BookmarkablePageLink("homeLink", Home.class));
 //
 //        add(new BookmarkablePageLink("infoLink", Info.class));

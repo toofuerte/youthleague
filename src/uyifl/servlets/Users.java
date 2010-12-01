@@ -17,7 +17,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 @SuppressWarnings("serial")
 public class Users extends HttpServlet {
 
-	private final String HREF="http://localhost:8888/app/";
+	private final String HREF="http://localhost:8888/admin/";
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
@@ -56,6 +56,7 @@ public class Users extends HttpServlet {
 	public boolean isAdmin(User user) {
 		String e = user.getEmail();
 		return ( e.equals("danlangford@gmail.com") || e.equals("garyacton@gmail.com") );
+
 	}
 
 	public String signOutLink() {

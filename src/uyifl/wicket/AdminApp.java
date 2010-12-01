@@ -5,13 +5,13 @@ import org.apache.wicket.protocol.http.HttpSessionStore;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.session.ISessionStore;
 
-import uyifl.wicket.admin.db1;
+import uyifl.wicket.admin.Home;
 
-public class AdministrationApp extends WebApplication {
+public class AdminApp extends WebApplication {
 
 	@Override
 	public Class<? extends Page> getHomePage() {
-		return db1.class;
+		return Home.class;
 	}
 
 	@Override
