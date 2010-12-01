@@ -11,7 +11,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
 		<init-param>
 			<param-name>applicationClassName</param-name>
-			<param-value>uyifl.wicket.AdministrationApp</param-value>
+			<param-value>uyifl.wicket.AdminApp</param-value>
 		</init-param>
 	</filter>
 

@@ -5,7 +5,7 @@ import org.apache.wicket.protocol.http.HttpSessionStore;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.session.ISessionStore;
 
-import uyifl.wicket.webapp.Home;
+import uyifl.wicket.app.Home;
 
 public class WebApp extends WebApplication {
 

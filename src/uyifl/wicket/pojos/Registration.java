@@ -1,9 +1,5 @@
 package uyifl.wicket.pojos;
 
-import java.util.Date;
-
-import javax.jdo.annotations.Embedded;
-import javax.jdo.annotations.EmbeddedOnly;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -11,9 +7,7 @@ import javax.jdo.annotations.PrimaryKey;
 
 import org.apache.wicket.IClusterable;
 
-import com.google.appengine.api.datastore.Email;
 import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.PhoneNumber;
 
 @PersistenceCapable
 public class Registration implements IClusterable {
@@ -22,121 +16,42 @@ public class Registration implements IClusterable {
 	 * 
 	 */
 	private static final long serialVersionUID = 523560842407933283L;
-	
+
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Key key;
 	@Persistent
-	private String firstName;
+	private String pfname;
 	@Persistent
-	private String lastName;
+	private String plname;
 	@Persistent
-	private PostalAddress address;
+	private String padd1;
 	@Persistent
-	private PhoneNumber homeNumber;
+	private String padd2;
 	@Persistent
-	private PhoneNumber cellNumber;
+	private String pcity;
 	@Persistent
-	private Email email;
+	private String pzip;
 	@Persistent
-	private Date birthDate;
+	private String phphone;
 	@Persistent
-	private String shirtSize;
+	private String pcphone;
 	@Persistent
-	private String pantSize;
-	@Persistent
-	private int weight;
-	@Persistent
-	private String emergencyName;
-	@Persistent
-	private PhoneNumber ePhone1;
-	@Persistent
-	private PhoneNumber ePhone2;
-	@Persistent
-	private String eRelation;
-	@Persistent
-	private String gFirstName;
-	@Persistent
-	private String gLastName;
-	
-	@Persistent
-	@Embedded
-	private PostalAddress gAddress;
-	
-	@Persistent
-	private PhoneNumber gHomeNumber;
-	@Persistent
-	private PhoneNumber gCellPhone;
-	@Persistent
-	private Email pEmail;
-	@Persistent
-	private String Coach;
-	@Persistent
-	private String teamName;
+	private String pemail;
 
-	// EMBEDDED CLASS
-	@PersistenceCapable
-    @EmbeddedOnly
-    public static class PostalAddress {
-        @Persistent
-        private String address1;
-        @Persistent
-        private String address2;
-        @Persistent
-        private String city;
-        @Persistent
-        private String state;
-        @Persistent
-        private String zipCode;
-        
-        public String toString() {
-        	return address1+", "+address2+", "+city+", "+state+", "+zipCode;
-        }
-        
-		public String getAddress1() {
-			return address1;
-		}
-		public String getAddress2() {
-			return address2;
-		}
-		public String getCity() {
-			return city;
-		}
-		public String getState() {
-			return state;
-		}
-		public String getZipCode() {
-			return zipCode;
-		}
-		public void setAddress1(String address1) {
-			this.address1 = address1;
-		}
-		public void setAddress2(String address2) {
-			this.address2 = address2;
-		}
-		public void setCity(String city) {
-			this.city = city;
-		}
-		public void setState(String state) {
-			this.state = state;
-		}
-		public void setZipCode(String zipCode) {
-			this.zipCode = zipCode;
-		}
-        
-    }
-	
-	
-	
-	// /////////////////////////////////
-	// // GETTERS AND SETTERS BELOW
+	@Persistent
+	private String pbirth;
+	@Persistent
+	private String ssize;
+	@Persistent
+	private String psize;
+	@Persistent
+	private String pweight;
 
-	public String toString() {
-		String addy = (address == null) ? "<NULL>" : address.toString();
-		return "(" + key.toString() + ") " + lastName + ", " + firstName
-				+ " - " + addy + " - " + homeNumber.getNumber() + " & "
-				+ cellNumber.getNumber();
-	}
+	@Persistent
+	private String cname;
+	@Persistent
+	private String tmname;
 
 	public Key getKey() {
 		return key;
@@ -146,180 +61,124 @@ public class Registration implements IClusterable {
 		this.key = key;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getPfname() {
+		return pfname;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setPfname(String pfname) {
+		this.pfname = pfname;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getPlname() {
+		return plname;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setPlname(String plname) {
+		this.plname = plname;
 	}
 
-	public PostalAddress getAddress() {
-		return address;
+	public String getPadd1() {
+		return padd1;
 	}
 
-	public void setAddress(PostalAddress address) {
-		this.address = address;
+	public void setPadd1(String padd1) {
+		this.padd1 = padd1;
 	}
 
-	public PhoneNumber getHomeNumber() {
-		return homeNumber;
+	public String getPadd2() {
+		return padd2;
 	}
 
-	public void setHomeNumber(PhoneNumber homeNumber) {
-		this.homeNumber = homeNumber;
+	public void setPadd2(String padd2) {
+		this.padd2 = padd2;
 	}
 
-	public PhoneNumber getCellNumber() {
-		return cellNumber;
+	public String getPcity() {
+		return pcity;
 	}
 
-	public void setCellNumber(PhoneNumber cellNumber) {
-		this.cellNumber = cellNumber;
+	public void setPcity(String pcity) {
+		this.pcity = pcity;
 	}
 
-	public Email getEmail() {
-		return email;
+	public String getPzip() {
+		return pzip;
 	}
 
-	public void setEmail(Email email) {
-		this.email = email;
+	public void setPzip(String pzip) {
+		this.pzip = pzip;
 	}
 
-	public Date getBirthDate() {
-		return birthDate;
+	public String getPhphone() {
+		return phphone;
 	}
 
-	public void setBirthDate(Date birthDate) {
-		this.birthDate = birthDate;
+	public void setPhphone(String phphone) {
+		this.phphone = phphone;
 	}
 
-	public String getShirtSize() {
-		return shirtSize;
+	public String getPcphone() {
+		return pcphone;
 	}
 
-	public void setShirtSize(String shirtSize) {
-		this.shirtSize = shirtSize;
+	public void setPcphone(String pcphone) {
+		this.pcphone = pcphone;
 	}
 
-	public String getPantSize() {
-		return pantSize;
+	public String getPemail() {
+		return pemail;
 	}
 
-	public void setPantSize(String pantSize) {
-		this.pantSize = pantSize;
+	public void setPemail(String pemail) {
+		this.pemail = pemail;
 	}
 
-	public int getWeight() {
-		return weight;
+	public String getPbirth() {
+		return pbirth;
 	}
 
-	public void setWeight(int weight) {
-		this.weight = weight;
+	public void setPbirth(String pbirth) {
+		this.pbirth = pbirth;
 	}
 
-	public String getEmergencyName() {
-		return emergencyName;
+	public String getSsize() {
+		return ssize;
 	}
 
-	public void setEmergencyName(String emergencyName) {
-		this.emergencyName = emergencyName;
+	public void setSsize(String ssize) {
+		this.ssize = ssize;
 	}
 
-	public PhoneNumber getePhone1() {
-		return ePhone1;
+	public String getPsize() {
+		return psize;
 	}
 
-	public void setePhone1(PhoneNumber ePhone1) {
-		this.ePhone1 = ePhone1;
+	public void setPsize(String psize) {
+		this.psize = psize;
 	}
 
-	public PhoneNumber getePhone2() {
-		return ePhone2;
+	public String getPweight() {
+		return pweight;
 	}
 
-	public void setePhone2(PhoneNumber ePhone2) {
-		this.ePhone2 = ePhone2;
+	public void setPweight(String pweight) {
+		this.pweight = pweight;
 	}
 
-	public String geteRelation() {
-		return eRelation;
+	public String getCname() {
+		return cname;
 	}
 
-	public void seteRelation(String eRelation) {
-		this.eRelation = eRelation;
+	public void setCname(String cname) {
+		this.cname = cname;
 	}
 
-	public String getgFirstName() {
-		return gFirstName;
+	public String getTmname() {
+		return tmname;
 	}
 
-	public void setgFirstName(String gFirstName) {
-		this.gFirstName = gFirstName;
-	}
-
-	public String getgLastName() {
-		return gLastName;
-	}
-
-	public void setgLastName(String gLastName) {
-		this.gLastName = gLastName;
-	}
-
-	public PostalAddress getgAddress() {
-		return gAddress;
-	}
-
-	public void setgAddress(PostalAddress gAddress) {
-		this.gAddress = gAddress;
-	}
-
-	public PhoneNumber getgHomeNumber() {
-		return gHomeNumber;
-	}
-
-	public void setgHomeNumber(PhoneNumber gHomeNumber) {
-		this.gHomeNumber = gHomeNumber;
-	}
-
-	public PhoneNumber getgCellPhone() {
-		return gCellPhone;
-	}
-
-	public void setgCellPhone(PhoneNumber gCellPhone) {
-		this.gCellPhone = gCellPhone;
-	}
-
-	public Email getpEmail() {
-		return pEmail;
-	}
-
-	public void setpEmail(Email pEmail) {
-		this.pEmail = pEmail;
-	}
-
-	public String getCoach() {
-		return Coach;
-	}
-
-	public void setCoach(String coach) {
-		Coach = coach;
-	}
-
-	public String getTeamName() {
-		return teamName;
-	}
-
-	public void setTeamName(String teamName) {
-		this.teamName = teamName;
+	public void setTmname(String tmname) {
+		this.tmname = tmname;
 	}
 
 }

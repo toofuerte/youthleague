@@ -1,7 +1,11 @@
-<html>
+<?xml version="1.0"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:wicket="http://wicket.sourceforge.net/" xml:lang="en" lang="en">
 <head>
-<title></title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<wicket:head>
+	<title>UYIFL - Take it Indoors - Registration</title>
+</wicket:head>
 </head>
 <body>
 <wicket:extend>
@@ -9,10 +13,7 @@
 
                 <h3>Register here for Spring Football 2011</h3>
                 <!--  ************FORM*******************-->
-                <form method= "post" action="/registration">
-                    <p>
-                        <!-- Hidden inputs contain non-visual --><!--  Information  --><input type= "hidden" name ="recipient" value="form@uyifl.com" / ><input type="hidden" name="subject" value="Sign Up" /><input type="hidden" name="redirect" value="reg.html" / >
-                    </p>
+                <form wicket:id="registrationForm">
                     <table width="600" border="2">
                         <tr>
                             <td colspan="8">
@@ -24,7 +25,7 @@
                                     First Name:
                             </td>
                             <td colspan="1">
-                                <input name="pfname" id="fName" type="text" size="20" maxlength="40" />
+                                <input name="pfname" wicket:id="pfname" id="fName" type="text" size="20" maxlength="40" />
                             </td>
                             <td colspan="1">
 
@@ -32,7 +33,7 @@
 
                             </td>
                             <td colspan="1">
-                                <input name="plname" id="LName" type="text" size="20" maxlength="40" />
+                                <input name="plname" wicket:id="plname" id="LName" type="text" size="20" maxlength="40" />
                             </td>
                         </tr>
                         <tr>
@@ -42,7 +43,7 @@
                                 </label>
                             </td>
                             <td colspan="1">
-                                <input name="padd1" id="Address1" type="text" size="20" maxlength="50" />
+                                <input name="padd1" wicket:id="padd1" id="Address1" type="text" size="20" maxlength="50" />
                             </td>
                       
                             <td colspan="1">
@@ -51,7 +52,7 @@
                                 </label>
                             </td>
                             <td colspan="1">
-                                <input name="padd2" id="Address2" type="text" size="25" maxlength="50" />
+                                <input name="padd2" wicket:id="padd2" id="Address2" type="text" size="25" maxlength="50" />
                             </td>
                         </tr>
                         <tr>
@@ -61,7 +62,7 @@
                                 </label>
                             </td>
                             <td colspan="1">
-                                <input name="pcity" type="text" size="20" maxlength="30" />
+                                <input name="pcity" wicket:id="pcity" type="text" size="20" maxlength="30" />
                             </td>
                             <td colspan="1">
                                 <label>
@@ -69,7 +70,7 @@
                                 </label>
                             </td>
                             <td>
-                            	<select name = "pState" size="1" id = "state">
+                            	<select name="pState" size="1" id = "state">
                             	   
                                     <option value="">Please Select</option>
                                     <option value= "UT">Utah </option>
@@ -132,7 +133,7 @@
                                 </label>
                             </td>
                             <td>
-                                <input name="pzip" type="text" size="8" maxlength="10" />
+                                <input name="pzip" wicket:id="pzip" type="text" size="8" maxlength="10" />
                             </td>
                         </tr>
                         <tr>
@@ -142,7 +143,7 @@
                                 </label>
                             </td>
                             <td colspan="1">
-                                <input name="phphone" type="text" size="20" maxlength="12" />
+                                <input name="phphone" wicket:id="phphone" type="text" size="20" maxlength="12" />
                             </td>
                             <td colspan="1">
                                 <label>
@@ -150,7 +151,7 @@
                                 </label>
                             </td>
                             <td colspan="1">
-                                <input name="pcphone" type="text" size="20" maxlength="12" />
+                                <input name="pcphone" wicket:id="pcphone" type="text" size="20" maxlength="12" />
                             </td>
                         </tr>
                         <tr>
@@ -160,7 +161,7 @@
                                 </label>
                             </td>
                             <td colspan="1">
-                                <input name="pemail" type="text" size="20" maxlength="50" />
+                                <input name="pemail" wicket:id="pemail" type="text" size="20" maxlength="50" />
                             </td>
                         </tr>
                         <tr>
@@ -170,7 +171,7 @@
                                 </label>
                             </td>
                             <td colspan="1">
-                                <input name="pbirth" type="text" size="20" maxlength="30" />
+                                <input name="pbirth" type="text" wicket:id="pbirth" size="20" maxlength="30" />
                             </td>
                             <td colspan="1">
                                 <label>
@@ -191,14 +192,14 @@
                                 </label>
                             </td>
                             <td colspan="1">
-                                <input name="ssize" type="text" size="20" maxlength="25" />
+                                <input name="ssize" type="text" swicket:id="ssize" ize="20" maxlength="25" />
                             </td>
                             <td colspan="1">
                                 <label>
                                 Pant Size:</label>
                             </td>
                             <td colspan="1">
-                            <input name="pbirth" type="text" size="20" maxlength="25" />
+                            <input name="psize" type="text" wicket:id="psize" size="20" maxlength="25" />
                             
                         </td>
                         </tr>
@@ -209,7 +210,7 @@
                                 </label>
                             </td>
                             <td colspan="1">
-                                <input name="pweight" type="text" size="20" maxlength="50" />
+                                <input name="pweight" type="text" wicket:id="pweight" size="20" maxlength="50" />
                             </td>
                         </tr>
                         <tr>
@@ -440,7 +441,7 @@
                             </label>
                         </td>
                         <td colspan="2">
-                            <input name="cname" type="text" size="20" maxlength="40" />
+                            <input name="cname" type="text" wicket:id="cname" size="20" maxlength="40" />
                         </td>
                     </tr>
 					 <tr>
@@ -450,7 +451,7 @@
                             </label>
                         </td>
                         <td colspan="2">
-                            <input name="tmname" type="text" size="20" maxlength="40" />
+                            <input name="tmname" type="text" wicket:id="tmname" size="20" maxlength="40" />
                         </td>
                     </tr>
                     <tr>
