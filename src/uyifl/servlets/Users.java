@@ -17,6 +17,7 @@ import com.google.appengine.api.users.UserServiceFactory;
 @SuppressWarnings("serial")
 public class Users extends HttpServlet {
 
+	//private final String HREF="http://utahyifl.appspot.com/admin/";
 	private final String HREF="http://localhost:8888/admin/";
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
