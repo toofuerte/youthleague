@@ -320,6 +320,105 @@ a.navBar:hover {
     border-right: 3px #dde8d8 solid;
 */
 }
+/* -------------------------TABLE-----------------------------*/
+
+
+#schedTable{
+	width:99%;
+	display:block;
+	background-color:#999999;
+}
+
+#field{
+	width:50%;
+	
+}
+#date3{
+	width:99%;
+	font-size:x-large;
+	text-align:center;
+	background-image: pictures/field.jpg;
+}
+
+#table{
+	width:90%
+	display:block;
+	background-color:#0000FF;
+	
+}
+
+#divHeaderTable
+{
+            width: 100%;
+            padding-bottom:5px;
+            display:block;
+}
+#divHeaderRow
+{
+            width: 100%; /* add extra that you want to for header column */
+            display:block;
+            height:105px;
+}
+#divHeaderColumn
+{
+            float: left;
+            width: 33%;
+            display:block;
+}
+#divTable
+{
+            width: 100%;
+            display:block;
+            padding-top:10px;
+            padding-bottom:10px;
+            padding-right:10px;
+            padding-left:10px; 
+}
+#divRow
+{
+         width: 99%; 
+         display:block;
+         padding-bottom:5px;
+		/* background-color:#ABC6DD;*/
+}
+#divColumn
+{
+         float: left;
+         width: 30%;
+         display:block;
+		 background-color:#DBECF3;
+		
+}
+
+#divColumn2
+{
+         float: left;
+         width: 90%;
+         display:block;
+		 text-align:center;
+		 font-weight:700;
+		 background-color:#33aa33;
+}
+
+#divColumn1
+{
+         float: left;
+         width: 30%;
+         display:block;
+		 background-color:#D7D7D7;
+		 text-align:left;
+		 font-weight:700;
+}
+
+
+
+
+
+
+
+
+
+
 /*-------------------FOOTER------------------*/
 #footer {
     border-top: 0px double #000000;
