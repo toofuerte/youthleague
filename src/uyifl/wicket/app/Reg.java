@@ -37,7 +37,7 @@ public class Reg extends AppTemplate {
 			}
 
 		};
-
+		//Player fields
 		// add all fields
 		form.add(new TextField<String>("pfname"));
 		form.add(new TextField<String>("plname"));
@@ -54,10 +54,14 @@ public class Reg extends AppTemplate {
 		form.add(new TextField<String>("ssize"));
 		form.add(new TextField<String>("psize"));
 		form.add(new TextField<String>("pweight"));
-
+		form.add(new TextField<String>("livew"));
+		
+		// Coach and team info
 		form.add(new TextField<String>("cname"));
 		form.add(new TextField<String>("tmname"));
-
+		
+		
+		
 		// Add registration form
 		add(form);
 
